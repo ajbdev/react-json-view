@@ -57,6 +57,10 @@ Name|Type|Default|Description
 `onDelete`|`(delete)=>{}`|`false`|When a callback function is passed in, `delete` functionality is enabled.  The callback is invoked before deletions are completed. Returning `false` from `onDelete` will prevent the change from being made. [see: onDelete docs](#onedit-onadd-and-ondelete-interaction)
 `onSelect`|`(select)=>{}`|`false`|When a function is passed in, clicking a value triggers the `onSelect` method to be called.
 `validationMessage`|`string`|"Validation Error"|Custom message for validation failures to `onEdit`, `onAdd`, or `onDelete` callbacks
+`onPropertyMouseEnter`|`(property, value)=>{}`|`false`|When a function is passed in, hovering on a property triggers the `onPropertyMouseEnter` method to be called.
+`onPropertyMouseLeave`|`(property, value)=>{}`|`false`|When a function is passed in, hovering off a property triggers the `onPropertyMouseLeave` method to be called.
+`onValueMouseEnter`|`(property, value)=>{}`|`false`|When a function is passed in, hovering on a value triggers the `onValueMouseEnter` method to be called.
+`onValueMouseLeave`|`(property, value)=>{}`|`false`|When a function is passed in, hovering off a value triggers the `onValueMouseLeave` method to be called.
 
 ### Features
 * `onEdit`, `onAdd` and `onDelete` props allow users to edit the `src` variable

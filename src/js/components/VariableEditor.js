@@ -51,9 +51,35 @@ class VariableEditor extends React.Component {
             onEdit,
             onDelete,
             onSelect,
+            onPropertyMouseEnter,
+            onPropertyMouseLeave,
+            onValueMouseEnter,
+            onValueMouseLeave,
             rjvId
         } = this.props
         const { editMode } = this.state
+
+
+        let nameProps = {
+            onMouseEnter: 
+                onPropertyMouseEnter === false 
+                    ? null 
+                    : () => { 
+                        onPropertyMouseEnter(
+                            variable.name, 
+                            variable.value
+                        ) 
+                    },
+            onMouseLeave:
+                onPropertyMouseLeave === false
+                    ? null
+                    : () => { 
+                        onPropertyMouseLeave(
+                            variable.name, 
+                            variable.value
+                        ) 
+                    },
+        }
 
         return (
             <div
@@ -64,7 +90,7 @@ class VariableEditor extends React.Component {
                 key={variable.name}
             >
                 {type == "array" ? (
-                    <span
+                    <span {...nameProps}
                         {...Theme(theme, "array-key")}
                         key={variable.name + "_" + namespace}
                     >
@@ -72,7 +98,7 @@ class VariableEditor extends React.Component {
                         <div {...Theme(theme, "colon")}>:</div>
                     </span>
                 ) : (
-                    <span>
+                    <span {...nameProps}>
                         <span
                             {...Theme(theme, "object-name")}
                             class="object-key"
@@ -104,6 +130,20 @@ class VariableEditor extends React.Component {
                                       })
                                   }
                               }
+                    }
+                    onMouseEnter={
+                        onValueMouseEnter === false 
+                            ? null
+                            : () => {
+                                onValueMouseEnter(variable.name, variable.value)
+                            }
+                    }
+                    onMouseLeave={
+                        onValueMouseLeave === false
+                            ? null
+                            : () => {
+                                onValueMouseLeave(variable.name, variable.value)
+                            }
                     }
                     {...Theme(theme, "variableValue", {
                         cursor: onSelect === false ? "default" : "pointer"

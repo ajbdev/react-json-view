@@ -34,6 +34,18 @@ ReactDom.render(
                 console.log("select callback", e)
                 console.log(e.namespace)
             }}
+            onValueMouseEnter={(p,v) => {
+                console.log('value hover on callback', p, v)
+            }}
+            onValueMouseLeave={(p,v) => {
+                console.log('value hover off callback', p, v)
+            }}
+            onPropertyMouseEnter={(p,v) => {
+                console.log('property hover on callback', p, v)
+            }}
+            onPropertyMouseLeave={(p,v) => {
+                console.log('property hover off callback', p, v)
+            }}
             displayObjectSize={true}
             name={"dev-server"}
             enableClipboard={copy => {
